@@ -19,3 +19,11 @@ jobs:
         uses: cicirello/generate-sitemap@v1
         with:
           base-url-path: https://efarina3.github.io/Toko-smartphone/
+
+      - name: Commit sitemap
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add sitemap.xml
+          git commit -m "Auto generate sitemap.xml" || echo "No changes"
+          git push
